@@ -15,10 +15,10 @@ const insertTenan = async (req, res) => {
 };
 
 const updateTenan = async (req, res) => {
-  const { id } = req.params;
+  const { kode_tenan } = req.params;
   const { namaTenan, hp } = req.body;
 
-  tenanModel.updateTenan(id, namaTenan, hp, (err, result) => {
+  tenanModel.updateTenan(kode_tenan, namaTenan, hp, (err, result) => {
     if (!err) {
       res.send('Update success');
     } else {
@@ -37,9 +37,21 @@ const getAllTenan = async (req, res) => {
   }
 };
 
+const deleteTenan = async (req, res) => {
+  const { kode_tenan } = req.params;
+
+  tenanModel.deleteTenan(kode_tenan, (err, result) => {
+    if (!err) {
+      res.send("Delete success");
+    } else {
+      res.status(500).send(err.message);
+    }
+  });
+};
 
 module.exports = {
   insertTenan,
   updateTenan,
-  getAllTenan
+  getAllTenan,
+  deleteTenan
 };

@@ -8,9 +8,9 @@ const insertTenan = (namaTenan, hp, callback) => {
   pool.query(query, values, callback);
 };
 
-const updateTenan = (id, namaTenan, hp, callback) => {
-  const query = 'UPDATE tenan SET nama_tenan = $2, hp = $3 WHERE id_tenan = $1';
-  const values = [id, namaTenan, hp];
+const updateTenan = (kode_tenan, namaTenan, hp, callback) => {
+  const query = 'UPDATE tenan SET nama_tenan = $2, hp = $3 WHERE kode_tenan = $1';
+  const values = [kode_tenan, namaTenan, hp];
   pool.query(query, values, callback);
 };
 
@@ -19,8 +19,15 @@ const getAllTenan = async () => {
   return pool.query(query);
 };
 
+const deleteTenan = (kode_tenan, callback) => {
+  const query = 'DELETE FROM tenan WHERE kode_tenan = $1';
+  const values = [kode_tenan];
+  pool.query(query, values, callback);
+};
+
 module.exports = {
   insertTenan,
   updateTenan,
-  getAllTenan
+  getAllTenan,
+  deleteTenan
 };
