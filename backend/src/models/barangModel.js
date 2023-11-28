@@ -19,8 +19,15 @@ const updateBarang = (kode_barang, nama_barang, satuan, harga_satuan, stok, call
     return pool.query(query);
   };
   
+  const deleteBarang = async (kode_barang) => {
+    const query = 'DELETE FROM barang WHERE kode_barang = $1';
+    const values = [kode_barang];
+    return pool.query(query, values);
+  };
+  
   module.exports = {
     insertBarang,
     updateBarang,
     getAllBarang,
+    deleteBarang,
   };

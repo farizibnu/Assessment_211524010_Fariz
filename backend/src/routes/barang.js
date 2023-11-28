@@ -8,4 +8,6 @@ router.put('/barang/:kode_barang', barangController.updateBarang);
 
 router.get('/barang', barangController.getAllBarang);
 
+router.delete('/barang/:kode_barang', barangController.deleteBarang);
+
 module.exports = router;

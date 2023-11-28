@@ -37,8 +37,21 @@ const getAllBarang = async (req, res) => {
   }
 };
 
+const deleteBarang = async (req, res) => {
+  const { kode_barang } = req.params;
+
+  try {
+    await barangModel.deleteBarang(kode_barang);
+    res.send("Delete success");
+  } catch (err) {
+    console.error('Error deleting data:', err.message);
+    res.status(500).send(err.message);
+  }
+};
+
 module.exports = {
   insertBarang,
   updateBarang,
   getAllBarang,
+  deleteBarang,
 };
