@@ -7,4 +7,6 @@ router.post('/kasir', kasirController.insertKasir);
 
 router.put('/kasir/:kode_kasir', kasirController.updateKasir);
 
+router.get('/kasir', kasirController.getAllKasir);
+
 module.exports = router;

@@ -26,7 +26,18 @@ const updateKasir = async (req, res) => {
   });
 };
 
+const getAllKasir = async (req, res) => {
+  try {
+    const result = await kasirModel.getAllKasir();
+    res.json(result.rows);
+  } catch (err) {
+    console.error('Error fetching kasir data:', err.message);
+    res.status(500).send(err.message);
+  }
+};
+
 module.exports = {
   insertKasir,
   updateKasir,
+  getAllKasir
 };

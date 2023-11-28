@@ -13,7 +13,13 @@ const updateKasir = (kode_kasir, nama, hp, callback) => {
   pool.query(query, values, callback);
 };
 
+const getAllKasir = async () => {
+  const query = 'SELECT * FROM kasir';
+  return pool.query(query);
+};
+
 module.exports = {
   insertKasir,
   updateKasir,
+  getAllKasir
 };
