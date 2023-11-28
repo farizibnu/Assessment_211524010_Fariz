@@ -14,7 +14,13 @@ const updateBarang = (kode_barang, nama_barang, satuan, harga_satuan, stok, call
     pool.query(query, values, callback);
   };
 
-module.exports = {
-  insertBarang,
-  updateBarang,
-};
+  const getAllBarang = async () => {
+    const query = 'SELECT * FROM barang';
+    return pool.query(query);
+  };
+  
+  module.exports = {
+    insertBarang,
+    updateBarang,
+    getAllBarang,
+  };

@@ -27,7 +27,18 @@ const updateBarang = async (req, res) => {
   });
 };
 
+const getAllBarang = async (req, res) => {
+  try {
+    const result = await barangModel.getAllBarang();
+    res.json(result.rows);
+  } catch (err) {
+    console.error('Error fetching data:', err.message);
+    res.status(500).send(err.message);
+  }
+};
+
 module.exports = {
   insertBarang,
   updateBarang,
+  getAllBarang,
 };
