@@ -13,6 +13,20 @@ const insertKasir = async (req, res) => {
   });
 };
 
+const updateKasir = async (req, res) => {
+  const { kode_kasir } = req.params;
+  const { nama, hp } = req.body;
+
+  kasirModel.updateKasir(kode_kasir, nama, hp, (err, result) => {
+    if (!err) {
+      res.send("Update success");
+    } else {
+      res.status(500).send(err.message);
+    }
+  });
+};
+
 module.exports = {
   insertKasir,
+  updateKasir,
 };
