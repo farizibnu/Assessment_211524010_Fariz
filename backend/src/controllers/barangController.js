@@ -1,9 +1,10 @@
-const barangModel = require("../models/barangModel");
+const barangModel = require('../models/barangModel');
 
-const insertBarang = (req, res) => {
-  const { NamaBarang, Satuan, HargaSatuan, Stok } = req.body;
+// Menambahkan barang baru
+const insertBarang = async (req, res) => {
+  const {nama_barang, satuan, harga_satuan, stok} = req.body;
 
-  barangModel.insertBarang(NamaBarang, Satuan, HargaSatuan, Stok, (err, result) => {
+  barangModel.insertBarang(nama_barang, satuan, harga_satuan, stok, (err, result) => {
     if (!err) {
       res.send("Insert success");
     } else {
@@ -12,26 +13,6 @@ const insertBarang = (req, res) => {
   });
 };
 
-const updateBarang = (req, res) => {
-  const KodeBarang = req.params.KodeBarang;
-  const { NamaBarang, Satuan, HargaSatuan, Stok } = req.body;
-  barangModel.updateBarang(
-    NamaBarang,
-    Satuan,
-    HargaSatuan,
-    Stok,
-    KodeBarang,
-    (err, result) => {
-      if (!err) {
-        res.send("Update success");
-      } else {
-        res.status(500).send(err.message);
-      }
-    }
-  );
-};
-
 module.exports = {
-    insertBarang,
-    updateBarang
-}
+  insertBarang,
+};
