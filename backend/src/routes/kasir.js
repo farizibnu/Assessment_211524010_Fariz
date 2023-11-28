@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const kasirController = require('../controllers/kasirController');
 
-// Route untuk mendapatkan semua kasir
-router.get('/kasir', kasirController.getAllKasir);
+// Rute untuk menambahkan kasir baru
+router.post('/kasir', kasirController.insertKasir);
 
 module.exports = router;

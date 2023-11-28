@@ -1,13 +1,12 @@
 const pool = require('../db');
 
-const getAllKasir = async () => {
-  try {
-    const result = await pool.query('SELECT * FROM kasir');
-    return result.rows;
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    throw error;
-  }
+// Menambahkan kasir baru
+const insertKasir = (nama, hp, callback) => {
+  const query = 'INSERT INTO kasir (nama, hp) VALUES ($1, $2)';
+  const values = [nama, hp];
+  pool.query(query, values, callback);
 };
 
-module.exports = { getAllKasir };
+module.exports = {
+  insertKasir,
+};
