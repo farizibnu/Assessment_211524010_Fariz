@@ -36,8 +36,21 @@ const getAllKasir = async (req, res) => {
   }
 };
 
+const deleteKasir = async (req, res) => {
+  const { kode_kasir } = req.params;
+
+  kasirModel.deleteKasir(kode_kasir, (err, result) => {
+    if (!err) {
+      res.send("Delete success");
+    } else {
+      res.status(500).send(err.message);
+    }
+  });
+};
+
 module.exports = {
   insertKasir,
   updateKasir,
-  getAllKasir
+  getAllKasir,
+  deleteKasir
 };

@@ -18,8 +18,15 @@ const getAllKasir = async () => {
   return pool.query(query);
 };
 
+const deleteKasir = (kode_kasir, callback) => {
+  const query = 'DELETE FROM kasir WHERE kode_kasir = $1';
+  const values = [kode_kasir];
+  pool.query(query, values, callback);
+};
+
 module.exports = {
   insertKasir,
   updateKasir,
-  getAllKasir
+  getAllKasir,
+  deleteKasir
 };
