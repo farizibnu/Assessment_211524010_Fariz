@@ -8,6 +8,13 @@ const insertTenan = (namaTenan, hp, callback) => {
   pool.query(query, values, callback);
 };
 
+const updateTenan = (id, namaTenan, hp, callback) => {
+  const query = 'UPDATE tenan SET nama_tenan = $2, hp = $3 WHERE id_tenan = $1';
+  const values = [id, namaTenan, hp];
+  pool.query(query, values, callback);
+};
+
 module.exports = {
   insertTenan,
+  updateTenan,
 };
