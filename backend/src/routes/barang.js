@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const barangController = require('../controllers/barangController');
 
-// Rute untuk menambahkan barang baru
 router.post('/barang', barangController.insertBarang);
+
+router.put('/barang/:kode_barang', barangController.updateBarang);
 
 module.exports = router;
