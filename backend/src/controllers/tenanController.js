@@ -1,13 +1,19 @@
-const pool = require('../db');
+// controllers/tenanController.js
+const tenanModel = require('../models/tenanModel');
 
-const getAllTenan = async (req, res) => {
-  try {
-    const result = await pool.query('SELECT * FROM tenan');
-    res.json(result.rows);
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
+// Menambahkan tenan baru
+const insertTenan = async (req, res) => {
+  const { namaTenan, hp } = req.body;
+
+  tenanModel.insertTenan(namaTenan, hp, (err, result) => {
+    if (!err) {
+      res.send('Insert success');
+    } else {
+      res.status(500).send(err.message);
+    }
+  });
 };
 
-module.exports = { getAllTenan };
+module.exports = {
+  insertTenan,
+};
