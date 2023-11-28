@@ -14,7 +14,13 @@ const updateTenan = (id, namaTenan, hp, callback) => {
   pool.query(query, values, callback);
 };
 
+const getAllTenan = async () => {
+  const query = 'SELECT * FROM tenan';
+  return pool.query(query);
+};
+
 module.exports = {
   insertTenan,
   updateTenan,
+  getAllTenan
 };

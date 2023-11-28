@@ -27,7 +27,19 @@ const updateTenan = async (req, res) => {
   });
 };
 
+const getAllTenan = async (req, res) => {
+  try {
+    const result = await tenanModel.getAllTenan();
+    res.json(result.rows);
+  } catch (err) {
+    console.error('Error fetching tenan data:', err.message);
+    res.status(500).send(err.message);
+  }
+};
+
+
 module.exports = {
   insertTenan,
   updateTenan,
+  getAllTenan
 };

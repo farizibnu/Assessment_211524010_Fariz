@@ -8,4 +8,8 @@ router.post('/tenan', tenanController.insertTenan);
 
 router.put('/tenan/:id', tenanController.updateTenan);
 
+router.get('/tenan', tenanController.getAllTenan);
+
+
+
 module.exports = router;
